@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Statistics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="ppcLogo.png" alt="Logo">
+            </div>
+            <div class="logo-title">Phillies Phantasy Camp</div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Stats</a>
+                <a href="#">Teams</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Baseball Player Statistics</h1>
+
+        <div class="controls">
+            <label for="team-filter">Filter by Team:</label>
+            <select id="team-filter">
+                <option value="">All Teams</option>
+            </select>
+
+            <label for="year-filter">Filter by Year:</label>
+            <select id="year-filter">
+                <option value="">All Years</option>
+            </select>
+
+            <label for="sort-stat">Sort by:</label>
+            <select id="sort-stat">
+                <option value="LAST NAME">Last Name</option>
+                <option value="FIRST NAME">First Name</option>
+                <option value="TEAM">Team</option>
+                <option value="ABs">ABs</option>
+                <option value="Runs">Runs</option>
+                <option value="Hits">Hits</option>
+                <option value="RBIs">RBIs</option>
+                <option value="2B">2B</option>
+                <option value="3B">3B</option>
+                <option value="AVG.">AVG</option>
+            </select>
+        </div>
+
+        <table id="stats-table">
+            <thead>
+                <tr>
+                    <th>LAST NAME</th>
+                    <th>FIRST NAME</th>
+                    <th>TEAM</th>
+                    <th>ABs</th>
+                    <th>Runs</th>
+                    <th>Hits</th>
+                    <th>RBIs</th>
+                    <th>2B</th>
+                    <th>3B</th>
+                    <th>AVG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows go here -->
+            </tbody>
+        </table>
+
+    </div>
+
+    
+
+    <!-- Include PapaParse library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
