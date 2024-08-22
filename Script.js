@@ -11,7 +11,19 @@ function aggregateStats(data, term) {
         const key = term === 'season' ? `${player['LAST NAME']}-${player['FIRST NAME']}-${player['YEAR']}` : `${player['LAST NAME']}-${player['FIRST NAME']}`;
 
         if (!aggregatedData[key]) {
-            aggregatedData[key] = { ...player, 'Games': 1 };
+            aggregatedData[key] = {
+                'LAST NAME': player['LAST NAME'],
+                'FIRST NAME': player['FIRST NAME'],
+                'TEAM': player['TEAM'],
+                'YEAR': player['YEAR'],
+                'ABs': player['ABs'] || 0,
+                'Runs': player['Runs'] || 0,
+                'Hits': player['Hits'] || 0,
+                'RBIs': player['RBIs'] || 0,
+                '2B': player['2B'] || 0,
+                '3B': player['3B'] || 0,
+                'Games': 1,
+            };
         } else {
             aggregatedData[key]['ABs'] += player['ABs'] || 0;
             aggregatedData[key]['Runs'] += player['Runs'] || 0;
@@ -25,7 +37,7 @@ function aggregateStats(data, term) {
 
     // Calculate AVG. for each player
     Object.values(aggregatedData).forEach(player => {
-        player['AVG.'] = player['Hits'] / player['ABs'];
+        player['AVG.'] = player['Hits'] / (player['ABs'] || 1); // Avoid division by zero
     });
 
     return Object.values(aggregatedData);
@@ -56,6 +68,12 @@ function populateTable(data) {
         </tr>`;
         tableBody.innerHTML += row;
     });
+
+    // Show or hide the Load More button
+    const loadMoreButton = document.getElementById('load-more');
+    if (loadMoreButton) {
+        loadMoreButton.style.display = currentPage * pageSize >= data.length ? 'none' : 'block';
+    }
 }
 
 function filterTable() {
