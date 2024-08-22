@@ -102,7 +102,7 @@ function filterTable() {
         filteredPlayers = filteredPlayers.filter(player => player.TEAM === team);
     }
     if (year) {
-        filteredPlayers = filteredPlayers.filter(player => player.Year === parseInt(year));
+        filteredPlayers = filteredPlayers.filter(player => player.YEAR === parseInt(year));
     }
 
     // Log the filtered players to check if filtering works correctly
