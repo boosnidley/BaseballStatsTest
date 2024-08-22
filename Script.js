@@ -104,6 +104,33 @@ function populateFilters() {
     });
 }
 
+// Function to filter and sort the table data
+function filterTable() {
+    const teamFilter = document.getElementById('team-filter').value;
+    const yearFilter = document.getElementById('year-filter').value;
+
+    let filteredPlayers = players;
+
+    // Filter by team
+    if (teamFilter) {
+        filteredPlayers = filteredPlayers.filter(player => player.TEAM === teamFilter);
+    }
+
+    // Filter by year
+    if (yearFilter) {
+        filteredPlayers = filteredPlayers.filter(player => player.YEAR == yearFilter);
+    }
+
+    // Sort by selected stat
+    const sortStat = document.getElementById('sort-stat').value;
+    if (sortStat) {
+        filteredPlayers.sort((a, b) => b[sortStat] - a[sortStat]);
+    }
+
+    // Populate the table with the filtered and sorted data
+    populateTable(filteredPlayers);
+}
+
 // Function to add event listeners to filters and sorting options
 function addEventListeners() {
     document.getElementById('team-filter').addEventListener('change', filterTable);
