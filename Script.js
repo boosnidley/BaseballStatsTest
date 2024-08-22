@@ -76,6 +76,41 @@ function populateTable(data) {
     });
 }
 
+// Function to populate the team and year filters
+function populateFilters() {
+    const teamFilter = document.getElementById('team-filter');
+    const yearFilter = document.getElementById('year-filter');
+
+    // Clear existing options
+    teamFilter.innerHTML = '<option value="">All Teams</option>';
+    yearFilter.innerHTML = '<option value="">All Years</option>';
+
+    // Populate team filter options
+    const teams = [...new Set(players.map(player => player.TEAM))];
+    teams.forEach(team => {
+        const option = document.createElement('option');
+        option.value = team;
+        option.textContent = team;
+        teamFilter.appendChild(option);
+    });
+
+    // Populate year filter options
+    const years = [...new Set(players.map(player => player.YEAR))];
+    years.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearFilter.appendChild(option);
+    });
+}
+
+// Function to add event listeners to filters and sorting options
+function addEventListeners() {
+    document.getElementById('team-filter').addEventListener('change', filterTable);
+    document.getElementById('year-filter').addEventListener('change', filterTable);
+    document.getElementById('sort-stat').addEventListener('change', filterTable);
+}
+
 // Function to load and parse the CSV data
 function loadCSVData() {
     Papa.parse('2024G1Stats.csv', {
@@ -93,7 +128,8 @@ function loadCSVData() {
     });
 }
 
+// Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
     loadCSVData(); // Load CSV data
-    addEventListeners();
+    addEventListeners(); // Add event listeners
 });
