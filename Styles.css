@@ -126,7 +126,7 @@ tr:hover {
     background-color: #ddd;
 }
 
-#team-filter, #year-filter, #sort-stat {
+#team-filter, #year-filter, #sort-stat, #term-filter {
     padding: 10px;
     margin: 0 10px;
     border: 1px solid #ccc;

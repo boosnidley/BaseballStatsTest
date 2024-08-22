@@ -74,7 +74,7 @@ function populateFilters() {
     });
 
     // Populate year filter options
-    const years = [...new Set(players.map(player => player.Year))];
+    const years = [...new Set(players.map(player => player.YEAR))];
     years.forEach(year => {
         const option = document.createElement('option');
         option.value = year;
